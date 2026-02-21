@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PNW Native Art Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>PNW Native Art Studio</h1>
+      <p class="subtitle">Drawing in the tradition of Pacific Northwest Coast artists</p>
+    </header>
+
+    <div id="toolbar">
+      <div class="tool-group">
+        <span class="group-label">Shapes</span>
+        <button id="btn-circle" class="tool-btn active" title="Draw Circle">
+          <svg width="20" height="20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          Circle
+        </button>
+      </div>
+
+      <div class="tool-group">
+        <span class="group-label">Style</span>
+        <label>
+          Fill
+          <input type="color" id="fill-color" value="#c0392b">
+        </label>
+        <label>
+          Stroke
+          <input type="color" id="stroke-color" value="#1a1a1a">
+        </label>
+        <label>
+          Stroke Width
+          <input type="range" id="stroke-width" min="1" max="20" value="3">
+          <span id="stroke-width-val">3</span>
+        </label>
+      </div>
+
+      <div class="tool-group">
+        <span class="group-label">Canvas</span>
+        <button id="btn-clear" class="action-btn">Clear</button>
+        <button id="btn-export-svg" class="action-btn">Export SVG</button>
+        <button id="btn-export-pdf" class="action-btn primary">Export PDF</button>
+      </div>
+    </div>
+
+    <div id="canvas-container">
+      <svg id="canvas"
+           xmlns="http://www.w3.org/2000/svg"
+           width="800" height="600"
+           viewBox="0 0 800 600">
+        <!-- background -->
+        <rect width="800" height="600" fill="#fdf6e3"/>
+        <!-- drawings go here -->
+        <g id="drawing-layer"></g>
+        <!-- preview while dragging -->
+        <g id="preview-layer"></g>
+      </svg>
+    </div>
+
+    <div id="status-bar">
+      <span id="status-msg">Click and drag on the canvas to draw a circle.</span>
+      <span id="coords"></span>
+    </div>
+  </div>
+
+  <!-- jsPDF + svg2pdf for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg2pdf.js/2.2.3/svg2pdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
