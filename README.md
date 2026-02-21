@@ -1,40 +1,47 @@
 # PNW Native Art Studio
 
-An SVG-based drawing app for creating artwork in the style of **Pacific Northwest Coast** Native American artists such as Bill Reid, Robert Davidson, and Freda Diesing.
+A Python desktop drawing app for creating artwork in the style of
+**Pacific Northwest Coast** Native American artists such as Bill Reid,
+Robert Davidson, and Freda Diesing.
 
-## Features
+Built with **Tkinter** (Python's standard GUI library — no JavaScript required),
+**svgwrite** for SVG export, and **reportlab** for PDF export.
 
-- **Circle tool** — click and drag to place circles (used as eyes, joints, and decorative elements in formline art)
-- **Fill & stroke color pickers** — choose your palette
-- **Stroke width control** — bold outlines are central to the formline tradition
-- **Export to SVG** — save your vector artwork
-- **Export to PDF** — A4-proportioned PDF via jsPDF + svg2pdf.js
-
-## Running
-
-Open `index.html` in any modern browser — no build step required.
+## Quick start
 
 ```bash
-open index.html   # macOS
-xdg-open index.html  # Linux
+# Install dependencies
+pip install -r requirements.txt
+
+# Launch the app
+python main.py
 ```
 
-Or serve locally:
+## How to draw
 
-```bash
-npx serve .
-# or
-python3 -m http.server 8080
+1. **Click and drag** on the canvas — drag distance sets the radius.
+2. Adjust **Fill**, **Stroke**, and **Width** in the toolbar before drawing.
+3. Hit **Export SVG** or **Export PDF** to save your work.
+
+## Project layout
+
+```
+pnw-native-art/
+├── main.py          # App entry point — Tkinter window and canvas
+├── shapes.py        # Shape primitives: draw_circle(), (ovoid, u-form coming soon)
+├── export.py        # export_svg() and export_pdf()
+└── requirements.txt
 ```
 
-## Planned Shapes (formline vocabulary)
+## Planned formline vocabulary
 
-- **Ovoid** — the fundamental building block of formline design
-- **U-form** — standard U-shaped element
-- **Split-U** — U-form with inner void
-- **Eye** — ovoid + inner circle (iris)
-- **Claw / talon**
-- **Feather groupings**
+| Shape     | Role in formline art                        | Status      |
+|-----------|---------------------------------------------|-------------|
+| Circle    | Eyes, joints, decorative dots               | Done        |
+| Ovoid     | Master primary form — all major body masses | Coming soon |
+| U-form    | Standard secondary element                  | Coming soon |
+| Split-U   | Tertiary element with inner void            | Coming soon |
+| Eye       | Ovoid + inner circle (iris)                 | Coming soon |
 
 ## References
 
